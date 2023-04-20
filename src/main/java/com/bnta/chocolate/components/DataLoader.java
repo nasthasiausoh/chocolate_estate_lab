@@ -43,7 +43,32 @@ public class DataLoader implements ApplicationRunner {
         chocolateRepository.save(chocolate3);
     }
 
-
-
+// should have added multiple chocolates to one estate as it is the nature of the relationship
+//    one to many: one estate has many chocolates
+// also we have to create the estate first here because remember that it is a dependency
+//    create the estate and then chocolate because when creating a new chocolate you will need to pass in an estate
 
 }
+// How Anna did it in the lab review:
+
+//@Component
+//public class DataLoader implements ApplicationRunner {
+//@Autowired
+//ChocolateRepository chocolateRepository;
+//
+//    @Autowired
+//    EstateRepository estateRepository;
+
+// default constructor:
+// public DataLoader(){
+//}
+
+// public void run(ApplicationArguments args){
+//    create an estate:
+//    Esa
+//    estateRepository.save()
+//    but it would be better to do
+//    estateService.saveEstate() she said this is because this is better for scaleablity and longevity of the app
+// }
+
+

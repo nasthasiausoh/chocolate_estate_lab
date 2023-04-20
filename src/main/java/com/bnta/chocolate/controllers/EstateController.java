@@ -12,17 +12,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/estates")
+@RequestMapping("/estates")  // everything is going to have the route "estates"
 public class EstateController {
 
     @Autowired
     EstateService estateService;
 
-    @GetMapping
+
+
+    @GetMapping       // This is an INDEX route
     public ResponseEntity<List<Estate>> getAllEstates(){
         List<Estate> estates = estateService.getAllEstates();
-        return new ResponseEntity<>(estates, HttpStatus.OK);
+        return new ResponseEntity<>(estates, HttpStatus.OK);      // the reason why we have to new up a ResponseEntity<> is because in "public ResponseEntity<List<Estate>> getAllEstates(){"  we have actually created it yet, we are just naming a method that uses it ??
     }
+//    Anna did the above slightly differently in the lab review, but it does the same thing.
 
     @PostMapping
     public ResponseEntity<Estate> addNewEstate(@RequestBody Estate estate){

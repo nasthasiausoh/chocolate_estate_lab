@@ -9,8 +9,6 @@ public class Chocolate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-
     private long id;
 
     @Column(name = "name")
@@ -19,10 +17,10 @@ public class Chocolate {
     private int cocoaPercentage;
 
     @ManyToOne
-    @JoinColumn(name = "estate_id")
+    @JoinColumn(name = "estate_id")   // estate_id is our foreign key which will be coming from our estate table
     @JsonIgnoreProperties({"chocolates"})
     private Estate estate;
-
+// in Anna's lab review she did @JoinColumn(name = "estate_id", nullable = false) the nullable = false because she is saying that every chocolate will have an estate
     public Chocolate(String name, int cocoaPercentage, Estate estate) {
         this.name = name;
         this.cocoaPercentage = cocoaPercentage;

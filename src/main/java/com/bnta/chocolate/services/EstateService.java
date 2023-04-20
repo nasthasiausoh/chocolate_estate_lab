@@ -16,6 +16,8 @@ public class EstateService {
     @Autowired
     EstateRepository estateRepository;
 
+//  we do not want to be instantiating our repositories anywhere other than our service layers as this is where our business logic is handled
+//  and we can also instantiate them in our data loader .
 
     // method getting estates
     public List<Estate> getAllEstates(){

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity( name = "estates")
 public class Estate {
-
+// i think if, grneratedvalue, column, entity are all from 'Hibernate' annotations
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,8 +21,9 @@ public class Estate {
     private String country;
 
     @OneToMany(mappedBy = "estate")
-    @JsonIgnoreProperties({"estate"})
+    @JsonIgnoreProperties({"estate"}) // to stop the serialisation/recurring process/cycle of get the estate->get the relevant chocolate -> oh these chocolates have an estate_id -> oh these have chocolates -> these have an estate etc etc
     private List<Chocolate> chocolates;
+// I think we do jsonignoreproperties on the estate because estate is a dependency. i.e. we cant have a chocolate without an estate, so estate is the starting point, then chocolate and then back to estate again so we are ignoring the estate to stop the serialisation cycle/process
 
     public Estate(String name, String country) {
         this.name = name;
