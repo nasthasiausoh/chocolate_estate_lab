@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity( name = "estates")
 public class Estate {
-// i think if, grneratedvalue, column, entity are all from 'Hibernate' annotations
+// i think the @id, generatedvalue, column, entity annotations are all from 'Hibernate'
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

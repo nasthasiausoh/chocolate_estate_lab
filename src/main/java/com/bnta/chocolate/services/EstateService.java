@@ -24,22 +24,30 @@ public class EstateService {
         return estateRepository.findAll();
     }
 
-    //method to get estate by id
-    public Optional<Estate> getEstateById(long id){
-        return estateRepository.findById(id);
-    }
 
     public Estate saveEstate(Estate estate){
         estateRepository.save(estate);
         return estate;
     }
 
-//    // add a new estate
+
+
+// EXTENSION:
+
+    //method to get estate by id
+//    public Optional<Estate> getEstateById(long id){
+//        return estateRepository.findById(id);
+//    }
+//    ANOTHER METHOD:
+    public Estate findEstateById(Long id) {
+        return estateRepository.findById(id).get();
+    }
+
+//    method to add a new estate:
 //    public Estate addNewEstate(Estate estate){
 //        estateRepository.save(estate);
 //        return estate;
 //    }
-
 
 
     // update a estate
@@ -49,10 +57,13 @@ public class EstateService {
     }
 
 
-    // delete a estate
+    //    Delete a estate by id:
     public void deleteEstate(long id){
         estateRepository.deleteById(id);
     }
+
+
+
 
 //
 }

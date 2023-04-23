@@ -19,17 +19,34 @@ public class ChocolateService {
     ChocolateRepository chocolateRepository;
 
 
-    // method getting chocolates
+//    Method for getting chocolates:
     public List<Chocolate> getAllChocolates(){
         return chocolateRepository.findAll();
     }
 
-    //method to get chocolate by id
-    public Optional<Chocolate> getChocolateById(long id){
-        return chocolateRepository.findById(id);
+
+//    EXTENSION:
+
+//    Method for finding chocolate by id (GET: SHOW)
+    public Chocolate findChocolateById(Long id) {
+        return chocolateRepository.findById(id).get();
+    }
+//    ANOTHER METHOD:
+//    public Optional<Chocolate> getChocolateById(long id){
+//        return chocolateRepository.findById(id);
+//    }
+
+
+//    Method for filtering chocolate with cocoa % > 60%
+    public List<Chocolate> getChocolatesWithCocoaPercentageGreaterThan(int cocoaPercentage){
+        return chocolateRepository.findByCocoaPercentageGreaterThan(cocoaPercentage);
     }
 
-    // add a new chocolate
+
+
+
+
+    // add a new chocolate (POST)
     public Chocolate addNewChocolate(Chocolate chocolate){
         chocolateRepository.save(chocolate);
         return chocolate;
@@ -46,6 +63,8 @@ public class ChocolateService {
     public void deleteChocolate(long id){
         chocolateRepository.deleteById(id);
     }
+
+
 
 //
 }
